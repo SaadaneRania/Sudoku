@@ -33,7 +33,7 @@ grille = generate_grille()
 
 fenetre = tk.Tk()
 fenetre.title("Grille Sudoku")
-fenetre.geometry("200x200")
+fenetre.geometry("400x400")
 fenetre.resizable(width=0, height=0)
 cadre = tk.Frame(fenetre)
 cadre.pack()

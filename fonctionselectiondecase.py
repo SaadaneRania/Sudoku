@@ -21,3 +21,10 @@ def valeur_dans_cell(i, j):
         return int(value)
     else:
         return 0
+
+# fonction de selection sans canvas
+for i in range(9):
+    for j in range(9):
+        case = tk.Entry(cadre, width=3)
+        case.grid(row=i, column=j)
+        case.insert(0, str(grille[i][j]))
