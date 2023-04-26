@@ -127,7 +127,7 @@ def check_grille():
             else:
                 print("Erreur", "Entrez des nombres valides!")
                 return
-print("Bravo", "La grille est correcte!")
+        print("Bravo", "La grille est correcte!")
 
 difficulté = 0.5
 grille = generate_grille(difficulté)
@@ -145,6 +145,8 @@ for i in range(9):
         case.grid(row=i, column=j)
         case.insert(0, str(grille[i][j]))
         cases[i][j] = case
+bouton_valider = tk.Button(fenetre, text="Valider", command=check_grille)
+bouton_valider.pack()
 bouton_annuler = tk.Button(fenetre, text="Annuler", bg="black", fg="red", command=annuler)
 bouton_annuler.pack()
 bouton_effacer = tk.Button(fenetre, text="Effacer", bg="black", fg="red", command=effacer)
@@ -167,5 +169,3 @@ bouton_moyen.grid(row=0, column=1)
 bouton_difficile = tk.Button(difficulté_cadre, text="Difficile", bg="red", fg="black", command=lambda: mettre_difficulté(0.25))
 bouton_difficile.grid(row=0, column=2)
 fenetre.mainloop()
-bouton_valider = tk.Button(fenetre, text="Valider", command=check_grille)
-bouton_valider.pack()
