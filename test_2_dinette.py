@@ -111,6 +111,23 @@ def mettre_difficulté(nouvelle_difficulté):
     difficulté = nouvelle_difficulté
     annuler() 
 
+def check_grille():
+        "Fonction qui vérifie si la grille est correcte"
+        grille_utilisateur = [[0 for x in range(9)] for y in range(9)]
+        for i in range(9):
+            for j in range(9):
+                case = cadre.grid_slaves(row=i, column=j)[0]
+                valeur = case.get()
+                if valeur.isdigit():
+                    valeur = int(valeur)
+                if not is_valid(grille_utilisateur, i, j, valeur):
+                    print("Erreur", "La grille n'est pas correcte!")
+                    return
+                grille_utilisateur[i][j] = valeur
+            else:
+                print("Erreur", "Entrez des nombres valides!")
+                return
+print("Bravo", "La grille est correcte!")
 
 difficulté = 0.5
 grille = generate_grille(difficulté)
@@ -150,3 +167,5 @@ bouton_moyen.grid(row=0, column=1)
 bouton_difficile = tk.Button(difficulté_cadre, text="Difficile", bg="red", fg="black", command=lambda: mettre_difficulté(0.25))
 bouton_difficile.grid(row=0, column=2)
 fenetre.mainloop()
+bouton_valider = tk.Button(fenetre, text="Valider", command=check_grille)
+bouton_valider.pack()
