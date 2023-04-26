@@ -27,11 +27,11 @@ Le but de ce jeu est de remplir une grille 9x9 avec des chiffres de façon a ce 
 
 Le joueur pourra donc entamer son jeu selon les règles. il faudra cependant:
 
-- [ ] Mettre en évidence quand le joueur fait une erreur en mettant le chiffre en rouge
+- [*] Mettre en évidence quand le joueur fait une erreur en mettant le chiffre en rouge
 - [*] que le joueur soit en capacité de supprimer un chiffre déjà entrer 
-- [ ] que le joueur puisse sauvegarder une partie et recommencer une autre déjà fini
-- [ ] que le joueur puisse annuler une partie s'il ne veut pas la finir
-- [ ] pouvoir proposer une aide au joueur s'il le désire
+- [*] que le joueur puisse sauvegarder une partie et recommencer une autre
+- [*] que le joueur puisse annuler une partie s'il ne veut pas la finir
+- [*] pouvoir proposer une aide au joueur s'il le désire
 - [ ] afficher les cases sur lesquelles porte les contraint si le joueur le souhaite
 - [ ] À la fin le joueur doit pouvoir voir le temps qu'il a fait avec le nombre d'erreurs qu'il a commise
 
