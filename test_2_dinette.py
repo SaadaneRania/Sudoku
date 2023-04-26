@@ -4,14 +4,16 @@ import random
 import json
 
 def generate_grille(difficulté):
-    """Fonction qui genere la grille"""
     grille = [[0 for x in range(9)] for y in range(9)] #creer une grille vide de taille 9x9
     for i in range(9):#boucle pour remplir les lignes de la grille
         for j in range(9):#boucle pour remplir les colonnes de la grille
             if random.random() < difficulté:
                 valeur = random.randint(1, 9)#les valeurs doivent etre comprises entre 1 et 9
-                if is_valid(grille, i, j, valeur):#on verifie si le remplissage respecte les conditions
+                if valeur not in grille[i] and all(valeur != grille[x][j] for x in range(9)) and all(valeur != grille[x][y] for x in range(3 * (i//3), 3 * (i//3) + 3) for y in range(3 * (j//3), 3 * (j//3) + 3)):
                     grille[i][j] = valeur
+                else:
+                    valeur = random.randint(1, 9)
+
     return grille
 
 def is_valid(grille, ligne, col, valeur):
