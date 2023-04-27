@@ -53,6 +53,7 @@ def annuler():
     global grille
     grille = generate_grille(difficulté) 
     maj_grille()
+    is_valid
 
 def effacer():
     """Fonction pour effacer les chiffres entrés"""
@@ -89,6 +90,7 @@ def maj_grille():
             if grille[i][j]:
                 case.insert(0, str(grille[i][j]))
         highlight_errors()
+        is_valid
 
 def afficher_chiffre(chiffre):
     """Fonction pour afficher les cases contenant un chiffre donné"""
@@ -116,6 +118,7 @@ def mettre_difficulté(nouvelle_difficulté):
     global difficulté
     difficulté = nouvelle_difficulté
     annuler() 
+    is_valid
 
 def check_grille():
         """Fonction qui vérifie si la grille est correcte"""
@@ -127,13 +130,13 @@ def check_grille():
                 if valeur.isdigit():
                     valeur = int(valeur)
                 if not is_valid(grille_utilisateur, i, j, valeur):
-                    print("Erreur", "La grille n'est pas correcte!")
+                    messagebox.showinfo("Erreur", "La grille n'est pas correcte!")
                     return
                 grille_utilisateur[i][j] = valeur
             else:
-                print("Erreur", "Entrez des nombres valides!")
+                messagebox.showinfo("Erreur", "Entrez des nombres valides!")
                 return
-        print("Bravo", "La grille est correcte!")
+        messagebox.showinfo("Bravo", "La grille est correcte!")
 
 def save_stats():
     """Fonction pour enregistrer les statistique du joueur"""
@@ -147,7 +150,7 @@ def afficher_stats():
     """Fonction pour afficher les statistiques"""
     with open("stats.json", "r") as f:
         stats = json.loads(ligne)
-        print(f"Temps: {stats['temps']} - Erreurs: {stats['erreurs']}")
+        messagebox.showinfo(f"Temps: {stats['temps']} - Erreurs: {stats['erreurs']}")
 
 def start_chrono():
     """Fonction pour démarrer le chronomètre"""
