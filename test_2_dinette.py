@@ -149,7 +149,7 @@ def save_stats():
 def afficher_stats():
     """Fonction pour afficher les statistiques"""
     with open("stats.json", "r") as f:
-        stats = json.loads(ligne)
+        stats = json.loads()
         messagebox.showinfo(f"Temps: {stats['temps']} - Erreurs: {stats['erreurs']}")
 
 def start_chrono():
@@ -182,7 +182,7 @@ for i in range(9):
         cases[i][j] = case
 chrono_label = tk.Label(fenetre, text="Temps: 0")
 chrono_label.pack()
-bouton_valider = tk.Button(fenetre, text="Valider", command=check_grille)
+bouton_valider = tk.Button(fenetre, text="Valider", bg="black", fg="red", command=check_grille)
 bouton_valider.pack()
 bouton_annuler = tk.Button(fenetre, text="Annuler", bg="black", fg="red", command=annuler)
 bouton_annuler.pack()
