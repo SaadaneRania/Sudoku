@@ -33,7 +33,7 @@ Le joueur pourra donc entamer son jeu selon les règles. il faudra cependant:
 - [*] que le joueur puisse annuler une partie s'il ne veut pas la finir
 - [*] pouvoir proposer une aide au joueur s'il le désire
 - [ ] afficher les cases sur lesquelles porte les contraint si le joueur le souhaite
-- [ ] À la fin le joueur doit pouvoir voir le temps qu'il a fait avec le nombre d'erreurs qu'il a commise
+- [*] À la fin le joueur doit pouvoir voir le temps qu'il a fait avec le nombre d'erreurs qu'il a commise
 ## Pour aller plus loin
 - [*] Proposer des niveaux de difficulté différent suivant le nombre de cases préremplies
 - [ ] Utiliser une IA pour proposer des aides pertinantes
