@@ -13,7 +13,9 @@ BENAOUDIA Madina
 MAQBOOL Adil
 
 ## URL de dépot
-https://github.com/SaadaneRania/Sudoku.git
+https://github.com/SaadaneRania/Sudoku.git     
+
+## lien du document contenant le programme
 https://github.com/SaadaneRania/Sudoku/blob/main/SUDOKU%20FINALE.py
 
 ## objectif général et régle du jeu
