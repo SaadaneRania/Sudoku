@@ -15,7 +15,7 @@ def generate_grille(difficulté):
                 valeur = random.randint(1, 9)#les valeurs doivent etre comprises entre 1 et 9
                 if valeur not in grille[i] and all(valeur != grille[x][j] for x in range(9)) and all(valeur != grille[x][y] for x in range(3 * (i//3), 3 * (i//3) + 3) for y in range(3 * (j//3), 3 * (j//3) + 3)):
                     grille[i][j] = valeur
-                else:
+            else:
                     valeur = random.randint(1, 9)
 
     return grille
