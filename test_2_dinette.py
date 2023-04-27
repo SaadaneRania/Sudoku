@@ -2,6 +2,10 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 import json
+import time
+
+start_time = 0
+elapsed_time = 0
 
 def generate_grille(difficulté):
     grille = [[0 for x in range(9)] for y in range(9)] #creer une grille vide de taille 9x9
@@ -114,7 +118,7 @@ def mettre_difficulté(nouvelle_difficulté):
     annuler() 
 
 def check_grille():
-        "Fonction qui vérifie si la grille est correcte"
+        """Fonction qui vérifie si la grille est correcte"""
         grille_utilisateur = [[0 for x in range(9)] for y in range(9)]
         for i in range(9):
             for j in range(9):
@@ -131,12 +135,38 @@ def check_grille():
                 return
         print("Bravo", "La grille est correcte!")
 
+def save_stats():
+    """Fonction pour enregistrer les statistique du joueur"""
+    erreurs = sum(case.cget("fg") == "red" for row in cases for case in row)
+    stats = {"temps": elapsed_time, "erreurs": erreurs}
+    with open("stats.json","a") as f:
+        json.dump(stats, f)
+        f.write("\n")
+
+def afficher_stats():
+    """Fonction pour afficher les statistiques"""
+    with open("stats.json", "r") as f:
+        stats = json.loads(ligne)
+        print(f"Temps: {stats['temps']} - Erreurs: {stats['erreurs']}")
+
+def start_chrono():
+    """Fonction pour démarrer le chronomètre"""
+    global start_time
+    start_time = time.time()
+
+def update_chrono():
+    """Fonction pour mettre à jour l'affichage du chronomètre"""
+    global elapsed_time
+    elapsed_time = time.time() - start_time
+    chrono_label.config(text=f"Temps: {int(elapsed_time)}")
+    fenetre.after(1000, update_chrono)
+
 difficulté = 0.5
 grille = generate_grille(difficulté)
 saved_grille = None
 fenetre = tk.Tk()
 fenetre.title("Grille Sudoku")
-fenetre.geometry("500x500")
+fenetre.geometry("600x600")
 fenetre.resizable(width=0, height=0)
 cadre = tk.Frame(fenetre)
 cadre.pack()
@@ -147,6 +177,8 @@ for i in range(9):
         case.grid(row=i, column=j)
         case.insert(0, str(grille[i][j]))
         cases[i][j] = case
+chrono_label = tk.Label(fenetre, text="Temps: 0")
+chrono_label.pack()
 bouton_valider = tk.Button(fenetre, text="Valider", command=check_grille)
 bouton_valider.pack()
 bouton_annuler = tk.Button(fenetre, text="Annuler", bg="black", fg="red", command=annuler)
@@ -157,6 +189,12 @@ bouton_sauvegarder = tk.Button(fenetre, text="Sauvegarder", bg="black", fg="red"
 bouton_sauvegarder.pack()
 bouton_charger = tk.Button(fenetre, text="Charger", bg="black", fg="red", command=charger)
 bouton_charger.pack()
+bouton_stats = tk.Button(fenetre, text="Enregister les statistique", bg="black", fg="red", command=save_stats)
+bouton_stats.pack()
+bouton_affichage = tk.Button(fenetre, text="Afficher les statistique", bg="black", fg="red", command=afficher_stats)
+bouton_affichage.pack()
+bouton_start = tk.Button(fenetre, text="Start", bg="black", fg="red", command=start_chrono)
+bouton_start.pack()
 chiffres_cadre = tk.Frame(fenetre)
 chiffres_cadre.pack()
 for i in range(1, 10):
@@ -170,4 +208,6 @@ bouton_moyen = tk.Button(difficulté_cadre, text="Moyen", bg="orange", fg="black
 bouton_moyen.grid(row=0, column=1)
 bouton_difficile = tk.Button(difficulté_cadre, text="Difficile", bg="red", fg="black", command=lambda: mettre_difficulté(0.25))
 bouton_difficile.grid(row=0, column=2)
+start_chrono()
+update_chrono()
 fenetre.mainloop()
